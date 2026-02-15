@@ -65,8 +65,6 @@ To determine the date for a given integer `d`:
 
 1. While there are remaining counts:
    - Pop the next `(count, freq)` pair from the front of the remaining counts list.
-   - Check whether `count + 1 == freq` AND `freq != 2`:
-     - If yes, return an empty list.
    - Check whether there is a slot free to assign a digit to `count + 1`.
      - If no, return an empty list.
    - Assign the digit `freq` to `count + 1`.
