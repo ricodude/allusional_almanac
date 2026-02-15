@@ -39,12 +39,17 @@ def main():
         # Expand cache until we have enough dates.
         start = time.perf_counter()
         while len(all_dates) < d:
+            if n > 10:
+                print(f"Warning: d={d} exceeds maximum possible dates ({len(all_dates)})")
+                break
             new_dates = calculate_dates_with_n_pairs(n)
             all_dates.extend(new_dates)
+            print(f"  n={n}: {len(new_dates)} dates, {len(all_dates)} total")
             n += 1
         elapsed = time.perf_counter() - start
 
-        print(f"{all_dates[d - 1]}  ({elapsed:.3f}s, {len(all_dates)} cached)")
+        if len(all_dates) >= d:
+            print(f"{all_dates[d - 1]}  ({elapsed:.3f}s, {len(all_dates)} cached)")
 
 
 def calculate_dates_with_n_pairs(n):
